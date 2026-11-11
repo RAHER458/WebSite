@@ -9,7 +9,7 @@
 </script>
 
 {#if login && isAdmin(login)}
-	<span class="rounded bg-fd-primary px-1 py-px text-[10px] font-semibold text-fd-primary-foreground">
+	<span class="rounded bg-red-600 px-1.5 py-px text-[10px] font-bold text-white">
 		{forumConfig.admins.badgeLabel}
 	</span>
 {/if}
@@ -21,8 +21,8 @@
 {#if rep !== null}
 	<span
 		class="rounded border border-fd-border bg-fd-muted px-1 py-px text-[10px] font-semibold text-fd-muted-foreground"
-		title="Reputation earned on this forum"
+		title="Репутация на форуме"
 	>
-		{rep} rep
+		{rep} реп.
 	</span>
 {/if}
