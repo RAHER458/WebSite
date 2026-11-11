@@ -174,7 +174,7 @@
 					{profile.discussions.totalCount === 1 ? 'публикация' : 'публикаций'}
 				</span>
 				<span title="Комментарии на форуме">
-					<strong class="font-semibold text-fd-foreground">{profile.комментариев.totalCount}</strong>
+					<strong class="font-semibold text-fd-foreground">{profile.comments.totalCount}</strong>
 					{profile.comments.totalCount === 1 ? 'комментарий' : 'комментариев'}
 				</span>
 				{#if profile.createdAt}
