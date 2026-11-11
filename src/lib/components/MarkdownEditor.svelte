@@ -3,7 +3,7 @@
 
 	let {
 		value = $bindable(''),
-		placeholder = 'Write in Markdown…',
+		placeholder = 'Напишите текст в Markdown…',
 		rows = 6
 	}: { value?: string; placeholder?: string; rows?: number } = $props();
 
@@ -14,14 +14,14 @@
 	async function showPreview() {
 		tab = 'preview';
 		if (!value.trim()) {
-			previewHTML = '<p class="text-fd-muted-foreground">Nothing to preview.</p>';
+			previewHTML = '<p class="text-fd-muted-foreground">Нет текста для предпросмотра.</p>';
 			return;
 		}
 		previewLoading = true;
 		try {
 			previewHTML = await renderMarkdown(value);
 		} catch {
-			previewHTML = '<p class="text-red-500">Preview failed.</p>';
+			previewHTML = '<p class="text-red-500">Не удалось создать предпросмотр.</p>';
 		} finally {
 			previewLoading = false;
 		}
@@ -60,7 +60,7 @@
 	{:else}
 		<div class="markdown min-h-24 p-3">
 			{#if previewLoading}
-				<p class="text-sm text-fd-muted-foreground">Rendering…</p>
+				<p class="text-sm text-fd-muted-foreground">Подготовка предпросмотра…</p>
 			{:else}
 				{@html previewHTML}
 			{/if}
