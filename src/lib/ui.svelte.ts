@@ -153,5 +153,5 @@ export function postableCategories(): Category[] {
 
 export function toggleTheme() {
 	const dark = document.documentElement.classList.toggle('dark');
-	localStorage.setItem('dk:theme', dark ? 'dark' : 'light');
+	localStorage.setItem('rh:theme', dark ? 'dark' : 'light');
 }
