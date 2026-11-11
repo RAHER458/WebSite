@@ -4,19 +4,19 @@
 
 /* Fumadocs-style neutral palette */
 :root {
-	--fd-background: hsl(225 25% 7%);
-	--fd-foreground: hsl(225 20% 94%);
-	--fd-muted: hsl(222 27% 13%);
-	--fd-muted-foreground: hsl(220 13% 65%);
-	--fd-card: hsl(222 28% 12%);
-	--fd-card-foreground: hsl(225 20% 94%);
-	--fd-border: hsl(224 23% 22%);
-	--fd-primary: hsl(234 96% 73%);
-	--fd-primary-foreground: hsl(230 25% 10%);
-	--fd-accent: hsl(225 25% 18%);
-	--fd-accent-foreground: hsl(225 20% 96%);
-	--fd-ring: hsl(234 96% 73%);
-	--fd-link: hsl(234 96% 76%);
+	--fd-background: hsl(0 0% 100%);
+	--fd-foreground: hsl(225 20% 10%);
+	--fd-muted: hsl(220 14% 96%);
+	--fd-muted-foreground: hsl(220 9% 42%);
+	--fd-card: hsl(0 0% 99%);
+	--fd-card-foreground: hsl(225 20% 10%);
+	--fd-border: hsl(220 13% 89%);
+	--fd-primary: hsl(234 96% 67%);
+	--fd-primary-foreground: hsl(0 0% 100%);
+	--fd-accent: hsl(220 15% 94%);
+	--fd-accent-foreground: hsl(225 20% 10%);
+	--fd-ring: hsl(234 96% 67%);
+	--fd-link: hsl(234 90% 52%);
 }
 
 .dark {
