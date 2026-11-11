@@ -31,7 +31,7 @@
 			started = true;
 			// revalidates the shared feed when revisiting the home page
 			loadOverview().catch((err) => {
-				error = err instanceof Error ? err.message : 'Failed to load discussions.';
+				error = err instanceof Error ? err.message : 'Не удалось загрузить обсуждения.';
 			});
 		}
 	});
@@ -50,7 +50,7 @@
 </script>
 
 <svelte:head>
-	<title>{forumConfig.site.name} — Home</title>
+	<title>{forumConfig.site.name} — Главная</title>
 </svelte:head>
 
 {#if auth.loading}
@@ -63,7 +63,7 @@
 	</div>
 {:else}
 	<div class="mb-6">
-		<h1 class="text-2xl font-bold tracking-tight">Latest discussions</h1>
+		<h1 class="text-2xl font-bold tracking-tight">Последние обсуждения</h1>
 		<p class="mt-1 text-sm text-fd-muted-foreground">{forumConfig.site.description}</p>
 	</div>
 
@@ -96,13 +96,13 @@
 		<Loading />
 	{:else if discussions.length === 0}
 		<div class="rounded-2xl border border-dashed border-fd-border py-16 text-center">
-			<p class="font-medium">No discussions yet</p>
-			<p class="mt-1 text-sm text-fd-muted-foreground">Be the first to start one.</p>
+			<p class="font-medium">Пока нет обсуждений</p>
+			<p class="mt-1 text-sm text-fd-muted-foreground">Станьте первым, кто начнёт обсуждение.</p>
 			<a
 				href={resolve('/new')}
 				class="mt-4 inline-flex rounded-lg bg-fd-primary px-4 py-2 text-sm font-medium text-fd-primary-foreground hover:opacity-90"
 			>
-				New post
+				Создать тему
 			</a>
 		</div>
 	{:else}
@@ -119,7 +119,7 @@
 					disabled={loadingMore}
 					class="rounded-lg border border-fd-border px-4 py-2 text-sm font-medium hover:bg-fd-accent disabled:opacity-50"
 				>
-					{loadingMore ? 'Loading…' : 'Load more'}
+					{loadingMore ? 'Загрузка…' : 'Загрузить ещё'}
 				</button>
 			</div>
 		{/if}
