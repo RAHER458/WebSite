@@ -21,7 +21,7 @@ export default defineForumConfig({
 		logo: 'RH',
 		description: 'Форум сообщества RH Media — обсуждения, новости и общение',
 		// logo: '💬',                        // emoji shown instead of the default icon
-		footer: 'RH Media Community'
+		footer: 'Сообщество RH Media'
 	},
 
 	repo: {
