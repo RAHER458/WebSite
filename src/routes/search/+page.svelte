@@ -28,7 +28,7 @@
 		try {
 			result = await searchDiscussions(q);
 		} catch (err) {
-			error = err instanceof Error ? err.message : 'Search failed.';
+			error = err instanceof Error ? err.message : 'Не удалось выполнить поиск.';
 		} finally {
 			loading = false;
 		}
@@ -36,7 +36,7 @@
 </script>
 
 <svelte:head>
-	<title>Search — {forumConfig.site.name}</title>
+	<title>Поиск — {forumConfig.site.name}</title>
 </svelte:head>
 
 {#if auth.loading}
@@ -44,15 +44,15 @@
 {:else if !auth.signedIn}
 	<SignInPrompt />
 {:else}
-	<h1 class="mb-1 text-2xl font-bold tracking-tight">Search</h1>
+	<h1 class="mb-1 text-2xl font-bold tracking-tight">Поиск</h1>
 	{#if query}
 		<p class="mb-6 text-sm text-fd-muted-foreground">
-			{#if result}{result.discussionCount} result{result.discussionCount === 1 ? '' : 's'} for{:else}Searching for{/if}
+			{#if result}{result.discussionCount} результат(ов) по запросу{:else}Поиск по запросу{/if}
 			<span class="font-medium text-fd-foreground">“{query}”</span>
 		</p>
 	{:else}
 		<p class="mb-6 text-sm text-fd-muted-foreground">
-			Type a query in the search box above to find discussions.
+			Введите запрос в строке поиска выше, чтобы найти обсуждения.
 		</p>
 	{/if}
 
@@ -62,8 +62,8 @@
 		<p class="rounded-xl border border-red-500/30 bg-red-500/5 p-4 text-sm text-red-500">{error}</p>
 	{:else if result && result.nodes.length === 0}
 		<div class="rounded-2xl border border-dashed border-fd-border py-16 text-center">
-			<p class="font-medium">No results</p>
-			<p class="mt-1 text-sm text-fd-muted-foreground">Try a different search term.</p>
+			<p class="font-medium">Ничего не найдено</p>
+			<p class="mt-1 text-sm text-fd-muted-foreground">Попробуйте изменить поисковый запрос.</p>
 		</div>
 	{:else if result}
 		<div class="flex flex-col gap-3">
