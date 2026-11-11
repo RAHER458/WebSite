@@ -12,7 +12,7 @@
 		/>
 	</svg>
 	<div>
-		<h2 class="text-lg font-semibold">Sign in to browse {forumConfig.site.name}</h2>
+		<h2 class="text-lg font-semibold">Войдите, чтобы открыть {forumConfig.site.name}</h2>
 		<p class="mx-auto mt-1 max-w-sm text-sm text-fd-muted-foreground">
 			This forum is powered by GitHub Discussions, and the GitHub API requires an authenticated
 			account to read and post.
@@ -23,6 +23,6 @@
 		onclick={() => (ui.signInOpen = true)}
 		class="mt-1 rounded-lg bg-fd-primary px-4 py-2 text-sm font-medium text-fd-primary-foreground transition-opacity hover:opacity-90"
 	>
-		Sign in with GitHub
+		Войти через GitHub
 	</button>
 </div>
