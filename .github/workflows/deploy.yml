@@ -28,12 +28,10 @@ jobs:
       - name: Build static site
         run: npm run build
         env:
-          BASE_PATH: /website
-          GITHUB_REPOSITORY: RAHER458/website
+          BASE_PATH: /WebSite
+          GITHUB_REPOSITORY: RAHER458/WebSite
       - name: Configure Pages
         uses: actions/configure-pages@v5
-        with:
-          enablement: true
       - name: Upload site
         uses: actions/upload-pages-artifact@v3
         with:
