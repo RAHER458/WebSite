@@ -51,7 +51,7 @@
 				(d) => d.author?.login.toLowerCase() === user.toLowerCase()
 			);
 			if (!repData && posts.length === 0) {
-				error = 'This user has no archived activity — sign in to view the full profile.';
+				error = 'У пользователя пока нет активности в архиве. Войдите, чтобы открыть полный профиль.';
 				loading = false;
 				return;
 			}
@@ -79,7 +79,7 @@
 				loading = false;
 			});
 		} catch (err) {
-			error = err instanceof Error ? err.message : 'Failed to load profile.';
+			error = err instanceof Error ? err.message : 'Не удалось загрузить профиль.';
 		} finally {
 			loading = false;
 		}
@@ -120,9 +120,9 @@
 
 	const tabs = $derived(
 		[
-			...(readmeHTML ? [{ id: 'overview' as Tab, label: 'Overview' }] : []),
-			{ id: 'posts' as Tab, label: `Posts` },
-			{ id: 'comments' as Tab, label: `Comments` }
+			...(readmeHTML ? [{ id: 'overview' as Tab, label: 'Обзор' }] : []),
+			{ id: 'posts' as Tab, label: `Публикации` },
+			{ id: 'comments' as Tab, label: `Комментарии` }
 		]
 	);
 </script>
@@ -139,9 +139,9 @@
 	<Loading />
 {:else if error || !profile}
 	<div class="rounded-2xl border border-dashed border-fd-border py-16 text-center">
-		<p class="font-medium">{error ?? 'Profile not found'}</p>
+		<p class="font-medium">{error ?? 'Профиль не найден'}</p>
 		<a href={resolve('/')} class="mt-2 inline-block text-sm text-fd-link hover:underline">
-			Back to all discussions
+			Назад ко всем обсуждениям
 		</a>
 	</div>
 {:else}
@@ -164,22 +164,22 @@
 			{/if}
 			<div class="mt-3 flex flex-wrap items-center gap-x-4 gap-y-1.5 text-sm text-fd-muted-foreground">
 				{#if repFor(profile.login) !== null}
-					<span title="Reputation earned on this forum">
+					<span title="Репутация на форуме">
 						<strong class="font-semibold text-fd-foreground">{repFor(profile.login)}</strong>
 						rep
 					</span>
 				{/if}
-				<span title="Posts on this forum">
+				<span title="Публикации на форуме">
 					<strong class="font-semibold text-fd-foreground">{profile.discussions.totalCount}</strong>
-					{profile.discussions.totalCount === 1 ? 'post' : 'posts'}
+					{profile.discussions.totalCount === 1 ? 'публикация' : 'публикаций'}
 				</span>
-				<span title="Comments on this forum">
-					<strong class="font-semibold text-fd-foreground">{profile.comments.totalCount}</strong>
-					{profile.comments.totalCount === 1 ? 'comment' : 'comments'}
+				<span title="Комментарии на форуме">
+					<strong class="font-semibold text-fd-foreground">{profile.комментариев.totalCount}</strong>
+					{profile.comments.totalCount === 1 ? 'комментарий' : 'комментариев'}
 				</span>
 				{#if profile.createdAt}
 					<span title={formatDate(profile.createdAt)}>
-						Joined GitHub {formatDate(profile.createdAt)}
+						На GitHub с {formatDate(profile.createdAt)}
 					</span>
 				{/if}
 				<a
@@ -189,7 +189,7 @@
 					class="inline-flex items-center gap-1.5 text-fd-link hover:underline"
 				>
 					<svg class="size-3.5" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 0c4.42 0 8 3.58 8 8a8.013 8.013 0 0 1-5.45 7.59c-.4.08-.55-.17-.55-.38 0-.27.01-1.13.01-2.2 0-.75-.25-1.23-.54-1.48 1.78-.2 3.65-.88 3.65-3.95 0-.88-.31-1.59-.82-2.15.08-.2.36-1.02-.08-2.12 0 0-.67-.22-2.2.82-.64-.18-1.32-.27-2-.27-.68 0-1.36.09-2 .27-1.53-1.03-2.2-.82-2.2-.82-.44 1.1-.16 1.92-.08 2.12-.51.56-.82 1.28-.82 2.15 0 3.06 1.86 3.75 3.64 3.95-.23.2-.44.55-.51 1.07-.46.21-1.61.55-2.33-.66-.15-.24-.6-.83-1.23-.82-.67.01-.27.38.01.53.34.19.73.9.82 1.13.16.45.68 1.31 2.69.94 0 .67.01 1.3.01 1.49 0 .21-.15.45-.55.38A7.995 7.995 0 0 1 0 8c0-4.42 3.58-8 8-8Z" /></svg>
-					GitHub profile
+					Профиль GitHub
 				</a>
 			</div>
 		</div>
@@ -218,9 +218,9 @@
 	{:else if tab === 'posts'}
 		{#if profile.discussions.nodes.length === 0}
 			<div class="rounded-2xl border border-dashed border-fd-border py-16 text-center">
-				<p class="font-medium">No posts yet</p>
+				<p class="font-medium">Публикаций пока нет</p>
 				<p class="mt-1 text-sm text-fd-muted-foreground">
-					@{profile.login} hasn't started any discussions.
+					@{profile.login} ещё не создавал обсуждений.
 				</p>
 			</div>
 		{:else}
@@ -237,7 +237,7 @@
 						disabled={loadingMore}
 						class="rounded-lg border border-fd-border px-4 py-2 text-sm font-medium hover:bg-fd-accent disabled:opacity-50"
 					>
-						{loadingMore ? 'Loading…' : 'Load more'}
+						{loadingMore ? 'Загрузка…' : 'Загрузить ещё'}
 					</button>
 				</div>
 			{/if}
@@ -252,9 +252,9 @@
 			</div>
 		{:else if profile.comments.nodes.length === 0}
 			<div class="rounded-2xl border border-dashed border-fd-border py-16 text-center">
-				<p class="font-medium">No comments yet</p>
+				<p class="font-medium">Комментариев пока нет</p>
 				<p class="mt-1 text-sm text-fd-muted-foreground">
-					@{profile.login} hasn't commented on any discussions.
+					@{profile.login} ещё не оставлял комментариев.
 				</p>
 			</div>
 		{:else}
@@ -266,7 +266,7 @@
 					>
 						<p class="line-clamp-2 text-sm">{excerpt(comment.bodyText)}</p>
 						<p class="mt-2 text-xs text-fd-muted-foreground">
-							on <span class="font-medium text-fd-foreground/80 group-hover:underline">{comment.discussion.title}</span>
+							в теме <span class="font-medium text-fd-foreground/80 group-hover:underline">{comment.discussion.title}</span>
 							· {timeAgo(comment.createdAt)}
 						</p>
 					</a>
@@ -274,7 +274,7 @@
 			</div>
 			{#if profile.comments.totalCount > profile.comments.nodes.length}
 				<p class="mt-4 text-center text-xs text-fd-muted-foreground">
-					Showing the {profile.comments.nodes.length} most recent of {profile.comments.totalCount} comments.
+					Показаны последние {profile.comments.nodes.length} из {profile.comments.totalCount} comments.
 				</p>
 			{/if}
 		{/if}
