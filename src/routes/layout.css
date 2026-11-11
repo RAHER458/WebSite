@@ -4,35 +4,35 @@
 
 /* Fumadocs-style neutral palette */
 :root {
-	--fd-background: hsl(0 0% 100%);
-	--fd-foreground: hsl(0 0% 3.9%);
-	--fd-muted: hsl(0 0% 96.1%);
-	--fd-muted-foreground: hsl(0 0% 45.1%);
-	--fd-card: hsl(0 0% 99.7%);
-	--fd-card-foreground: hsl(0 0% 3.9%);
-	--fd-border: hsl(0 0% 89.8%);
-	--fd-primary: hsl(0 0% 9%);
-	--fd-primary-foreground: hsl(0 0% 98%);
-	--fd-accent: hsl(0 0% 94.1%);
-	--fd-accent-foreground: hsl(0 0% 9%);
-	--fd-ring: hsl(0 0% 63.9%);
-	--fd-link: hsl(210 100% 42%);
+	--fd-background: hsl(225 25% 7%);
+	--fd-foreground: hsl(225 20% 94%);
+	--fd-muted: hsl(222 27% 13%);
+	--fd-muted-foreground: hsl(220 13% 65%);
+	--fd-card: hsl(222 28% 12%);
+	--fd-card-foreground: hsl(225 20% 94%);
+	--fd-border: hsl(224 23% 22%);
+	--fd-primary: hsl(234 96% 73%);
+	--fd-primary-foreground: hsl(230 25% 10%);
+	--fd-accent: hsl(225 25% 18%);
+	--fd-accent-foreground: hsl(225 20% 96%);
+	--fd-ring: hsl(234 96% 73%);
+	--fd-link: hsl(234 96% 76%);
 }
 
 .dark {
-	--fd-background: hsl(0 0% 5.5%);
-	--fd-foreground: hsl(0 0% 92%);
-	--fd-muted: hsl(0 0% 12.9%);
-	--fd-muted-foreground: hsl(0 0% 60.9%);
-	--fd-card: hsl(0 0% 8%);
-	--fd-card-foreground: hsl(0 0% 92%);
-	--fd-border: hsl(0 0% 15.5%);
-	--fd-primary: hsl(0 0% 98%);
-	--fd-primary-foreground: hsl(0 0% 9%);
-	--fd-accent: hsl(0 0% 14.9%);
-	--fd-accent-foreground: hsl(0 0% 98%);
-	--fd-ring: hsl(0 0% 40%);
-	--fd-link: hsl(210 100% 66%);
+	--fd-background: hsl(225 25% 7%);
+	--fd-foreground: hsl(225 20% 94%);
+	--fd-muted: hsl(222 27% 13%);
+	--fd-muted-foreground: hsl(220 13% 65%);
+	--fd-card: hsl(222 28% 12%);
+	--fd-card-foreground: hsl(225 20% 94%);
+	--fd-border: hsl(224 23% 22%);
+	--fd-primary: hsl(234 96% 73%);
+	--fd-primary-foreground: hsl(230 25% 10%);
+	--fd-accent: hsl(225 25% 18%);
+	--fd-accent-foreground: hsl(225 20% 96%);
+	--fd-ring: hsl(234 96% 73%);
+	--fd-link: hsl(234 96% 76%);
 }
 
 @theme inline {
