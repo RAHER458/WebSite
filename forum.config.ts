@@ -18,6 +18,7 @@ import { defineForumConfig } from './src/lib/config/schema';
 export default defineForumConfig({
 	site: {
 		name: 'RH Forum',
+		logo: 'RH',
 		description: 'Форум сообщества RH Media — обсуждения, новости и общение',
 		// logo: '💬',                        // emoji shown instead of the default icon
 		footer: 'RH Media Community'
