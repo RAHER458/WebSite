@@ -25,7 +25,7 @@
 		<a
 			href={resolve('/u/[login]', { login: discussion.author.login })}
 			class="relative z-10 mt-0.5 shrink-0 self-start"
-			title="View @{discussion.author.login}'s profile"
+			title="Открыть профиль @{discussion.author.login}"
 		>
 			<img
 				src={discussion.author.avatarUrl}
@@ -79,12 +79,12 @@
 			{/if}
 			<span class="ml-auto inline-flex items-center gap-3">
 				{#if forumConfig.features.upvotes}
-				<span class="inline-flex items-center gap-1" title="Upvotes">
+				<span class="inline-flex items-center gap-1" title="Голоса">
 					<svg class="size-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m18 15-6-6-6 6" /></svg>
 					{discussion.upvoteCount}
 				</span>
 				{/if}
-				<span class="inline-flex items-center gap-1" title="Comments">
+				<span class="inline-flex items-center gap-1" title="Комментарии">
 					<svg class="size-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-8.5 8.5 8.5 8.5 0 0 1-3.8-.9L3 21l1.9-5.7a8.5 8.5 0 1 1 16.1-3.8z" /></svg>
 					{discussion.comments.totalCount}
 				</span>
