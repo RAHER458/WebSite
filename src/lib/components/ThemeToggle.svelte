@@ -6,8 +6,8 @@
 	type="button"
 	onclick={toggleTheme}
 	class="inline-flex size-8 items-center justify-center rounded-full border border-fd-border text-fd-muted-foreground transition-colors hover:bg-fd-accent hover:text-fd-accent-foreground"
-	aria-label="Toggle theme"
-	title="Toggle theme"
+	aria-label="Переключить тему"
+	title="Переключить тему"
 >
 	<!-- sun (shown in light) -->
 	<svg
