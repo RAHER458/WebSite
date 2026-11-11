@@ -86,7 +86,7 @@
 			persist();
 			editing = false;
 		} catch (err) {
-			editError = err instanceof Error ? err.message : 'Failed to save changes.';
+			editError = err instanceof Error ? err.message : 'Не удалось сохранить изменения.';
 		} finally {
 			editBusy = false;
 		}
@@ -95,13 +95,13 @@
 	let deleteBusy = $state(false);
 	async function removeDiscussion() {
 		if (!discussion || deleteBusy) return;
-		if (!confirm('Permanently delete this post and all its comments?')) return;
+		if (!confirm('Удалить эту публикацию и все комментарии без возможности восстановления?')) return;
 		deleteBusy = true;
 		try {
 			await deleteDiscussion(discussion.id);
 			await goto(resolve('/'));
 		} catch (err) {
-			error = err instanceof Error ? err.message : 'Failed to delete the post.';
+			error = err instanceof Error ? err.message : 'Не удалось удалить публикацию.';
 			deleteBusy = false;
 		}
 	}
@@ -125,7 +125,7 @@
 		if (archiveMode()) {
 			discussion = await fetchArchivedDiscussion(number);
 			if (!discussion) {
-				error = 'This post is not in the read-only archive yet — sign in to view it live.';
+				error = 'Эта публикация ещё не попала в архив. Войдите, чтобы открыть её.';
 			}
 			loading = false;
 			return;
@@ -136,7 +136,7 @@
 				loading = false;
 			});
 		} catch (err) {
-			error = err instanceof Error ? err.message : 'Failed to load discussion.';
+			error = err instanceof Error ? err.message : 'Не удалось загрузить обсуждение.';
 		} finally {
 			loading = false;
 		}
@@ -218,7 +218,7 @@
 {:else}
 	<article class={article ? 'mx-auto max-w-3xl' : ''}>
 		<nav class="mb-4 text-sm text-fd-muted-foreground">
-			<a href={resolve('/')} class="hover:text-fd-foreground">Forum</a>
+			<a href={resolve('/')} class="hover:text-fd-foreground">Форум</a>
 			<span class="mx-1.5">/</span>
 			<a href={resolve('/t/[slug]', { slug: discussion.category.slug })} class="hover:text-fd-foreground">
 				{discussion.category.name}
@@ -226,7 +226,7 @@
 		</nav>
 
 		{#if article}
-			<p class="mb-2 text-xs font-semibold tracking-widest text-fd-link uppercase">Article</p>
+			<p class="mb-2 text-xs font-semibold tracking-widest text-fd-link uppercase">Статья</p>
 			<h1 class="text-3xl font-bold tracking-tight sm:text-4xl">{discussion.title}</h1>
 		{:else}
 			<h1 class="text-2xl font-bold tracking-tight">{discussion.title}</h1>
@@ -278,14 +278,14 @@
 						disabled={deleteBusy}
 						class="rounded-md px-2 py-1 font-medium text-red-500 transition-colors hover:bg-red-500/10 disabled:opacity-50"
 					>
-						{deleteBusy ? 'Deleting…' : 'Delete'}
+						{deleteBusy ? 'Удаление…' : 'Delete'}
 					</button>
 				{/if}
 				<a
 					href={reportUrl}
 					target="_blank"
 					rel="noreferrer"
-					title="Report this content to GitHub"
+					title="Пожаловаться на содержимое в GitHub"
 					class="rounded-md px-2 py-1 text-fd-muted-foreground transition-colors hover:bg-fd-accent hover:text-fd-accent-foreground"
 				>
 					Report
@@ -296,7 +296,7 @@
 		{#if editing}
 			<form onsubmit={saveEdit} class="mt-6 flex flex-col gap-4 rounded-2xl border border-fd-border bg-fd-card p-4">
 				<div>
-					<label class="mb-1 block text-sm font-medium" for="dk-edit-title">Title</label>
+					<label class="mb-1 block text-sm font-medium" for="dk-edit-title">Заголовок</label>
 					<input
 						id="dk-edit-title"
 						type="text"
@@ -306,7 +306,7 @@
 					/>
 				</div>
 				<div>
-					<label class="mb-1 block text-sm font-medium" for="dk-edit-topic">Topic</label>
+					<label class="mb-1 block text-sm font-medium" for="dk-edit-topic">Раздел</label>
 					<select
 						id="dk-edit-topic"
 						bind:value={editCategoryId}
@@ -318,7 +318,7 @@
 					</select>
 				</div>
 				<div>
-					<span class="mb-1 block text-sm font-medium">Body</span>
+					<span class="mb-1 block text-sm font-medium">Текст</span>
 					<MarkdownEditor bind:value={editBody} rows={10} />
 				</div>
 				{#if editError}
@@ -337,7 +337,7 @@
 						disabled={editBusy || !editTitle.trim() || !editBody.trim()}
 						class="rounded-lg bg-fd-primary px-4 py-2 text-sm font-medium text-fd-primary-foreground transition-opacity hover:opacity-90 disabled:opacity-50"
 					>
-						{editBusy ? 'Saving…' : 'Save changes'}
+						{editBusy ? 'Сохранение…' : 'Сохранить изменения'}
 					</button>
 				</div>
 			</form>
@@ -368,7 +368,7 @@
 		<section class="mt-8">
 			<h2 class="mb-4 text-lg font-semibold">
 				{discussion.comments.totalCount}
-				{discussion.comments.totalCount === 1 ? 'comment' : 'comments'}
+				{discussion.comments.totalCount === 1 ? 'комментарий' : 'комментариев'}
 			</h2>
 
 			<div class="flex flex-col gap-4">
@@ -384,11 +384,11 @@
 
 			{#if discussion.locked}
 				<p class="mt-6 rounded-xl border border-fd-border bg-fd-muted/50 p-4 text-sm text-fd-muted-foreground">
-					This discussion is locked. New comments are disabled.
+					Обсуждение закрыто. Новые комментарии отключены.
 				</p>
 			{:else if !auth.signedIn}
 				<div class="mt-6 rounded-xl border border-fd-border bg-fd-muted/50 p-4 text-center text-sm text-fd-muted-foreground">
-					You're viewing a read-only snapshot.
+					Вы просматриваете архивную копию без возможности отвечать.
 					<button
 						type="button"
 						onclick={() => (ui.signInOpen = true)}
@@ -396,11 +396,11 @@
 					>
 						Sign in
 					</button>
-					to join the discussion.
+					чтобы присоединиться к обсуждению.
 				</div>
 			{:else}
 				<form onsubmit={submitComment} class="mt-6">
-					<h3 class="mb-2 text-sm font-medium">Add a comment</h3>
+					<h3 class="mb-2 text-sm font-medium">Добавить комментарий</h3>
 					<MarkdownEditor bind:value={commentBody} />
 					{#if postError}<p class="mt-2 text-sm text-red-500">{postError}</p>{/if}
 					<div class="mt-3 flex justify-end">
@@ -409,7 +409,7 @@
 							disabled={posting || !commentBody.trim()}
 							class="rounded-lg bg-fd-primary px-4 py-2 text-sm font-medium text-fd-primary-foreground transition-opacity hover:opacity-90 disabled:opacity-50"
 						>
-							{posting ? 'Posting…' : 'Comment'}
+							{posting ? 'Отправка…' : 'Comment'}
 						</button>
 					</div>
 				</form>
