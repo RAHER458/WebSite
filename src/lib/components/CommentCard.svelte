@@ -47,7 +47,7 @@
 			replying = false;
 			onposted(reply);
 		} catch (err) {
-			error = err instanceof Error ? err.message : 'Failed to post reply.';
+			error = err instanceof Error ? err.message : 'Не удалось отправить ответ.';
 		} finally {
 			busy = false;
 		}
@@ -136,7 +136,7 @@
 
 			{#if replying}
 				<form onsubmit={submitReply} class="pt-1">
-					<MarkdownEditor bind:value={replyBody} rows={3} placeholder="Write a reply…" />
+					<MarkdownEditor bind:value={replyBody} rows={3} placeholder="Напишите ответ…" />
 					{#if error}<p class="mt-2 text-sm text-red-500">{error}</p>{/if}
 					<div class="mt-2 flex justify-end gap-2">
 						<button
