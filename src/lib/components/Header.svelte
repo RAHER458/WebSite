@@ -62,7 +62,7 @@
 				<input
 					type="search"
 					bind:value={query}
-					placeholder="Search forum…"
+					placeholder="Поиск по форуму…"
 					class="w-full rounded-lg border border-fd-border bg-fd-muted/50 py-1.5 pr-3 pl-8 text-sm text-fd-foreground outline-none transition-colors placeholder:text-fd-muted-foreground focus:bg-fd-background focus:ring-2 focus:ring-fd-ring"
 				/>
 			</div>
@@ -79,7 +79,7 @@
 					class="hidden items-center gap-1.5 rounded-lg bg-fd-primary px-3 py-1.5 text-sm font-medium text-fd-primary-foreground transition-opacity hover:opacity-90 sm:inline-flex"
 				>
 					<svg class="size-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M12 5v14M5 12h14" /></svg>
-					New post
+					Новая тема
 				</a>
 				<details class="relative">
 					<summary
@@ -109,7 +109,7 @@
 							onclick={() => auth.signOut()}
 							class="block w-full px-3 py-2 text-left text-sm text-red-500 hover:bg-fd-accent"
 						>
-							Sign out
+							Выйти
 						</button>
 					</div>
 				</details>
@@ -119,7 +119,7 @@
 					onclick={() => (ui.signInOpen = true)}
 					class="inline-flex items-center gap-2 rounded-lg bg-fd-primary px-3 py-1.5 text-sm font-medium text-fd-primary-foreground transition-opacity hover:opacity-90"
 				>
-					Sign in
+					Войти
 				</button>
 			{/if}
 		</div>
