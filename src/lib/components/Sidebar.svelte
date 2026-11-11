@@ -8,7 +8,7 @@
 	const current = $derived(page.params.slug);
 </script>
 
-<nav class="flex flex-col gap-0.5 text-sm" aria-label="Topics">
+<nav class="flex flex-col gap-0.5 text-sm" aria-label="Разделы">
 	<p class="mb-1 px-2 text-xs font-medium tracking-wide text-fd-muted-foreground uppercase">
 		Topics
 	</p>
@@ -19,7 +19,7 @@
 			: 'bg-fd-accent font-medium text-fd-accent-foreground'}"
 	>
 		<svg class="size-4 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" /></svg>
-		All discussions
+		Все обсуждения
 	</a>
 	{#each categories as category (category.id)}
 		<a
