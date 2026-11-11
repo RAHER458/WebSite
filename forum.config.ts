@@ -17,16 +17,16 @@ import { defineForumConfig } from './src/lib/config/schema';
  */
 export default defineForumConfig({
 	site: {
-		name: 'Discussion Kit',
-		description: 'A community forum powered by GitHub Discussions',
+		name: 'RH Forum',
+		description: 'Форум сообщества RH Media — обсуждения, новости и общение',
 		// logo: '💬',                        // emoji shown instead of the default icon
-		footer: 'Powered by GitHub Discussions'
+		footer: 'RH Media Community'
 	},
 
 	repo: {
 		// Omit owner/name to auto-detect when building in GitHub Actions.
-		owner: 'NotReeceHarris',
-		name: 'discussion-kit'
+		owner: 'RAHER458',
+		name: 'website'
 	},
 
 	// Extra header links
@@ -35,22 +35,17 @@ export default defineForumConfig({
 	],
 
 	auth: {
-		allowToken: true,
-		oauth: {
-			// Fill both to enable the "Continue with GitHub" button (see README):
-			clientId: 'Ov23li1QctsLGHqbcIwq',
-			proxyUrl: 'https://discussion-kit-oauth.reeceharris.workers.dev'
-		}
+		allowToken: true
 	},
 
 	admins: {
-		logins: ['NotReeceHarris'], // GitHub logins that get the admin badge
-		badgeLabel: 'Admin'  // label shown next to admin usernames
+		logins: ['RAHER458'], // GitHub logins that get the admin badge
+		badgeLabel: 'Главный администратор'  // label shown next to admin usernames
 	},
 
 	// Custom badges shown next to usernames: label → GitHub logins
 	badges: {
-		'Moderator': ['NotDevenBriers'],
+		'Модератор': [],
 		// 'Contributor': ['someuser', 'anotheruser']
 	},
 
@@ -94,11 +89,11 @@ export default defineForumConfig({
 	// Override any CSS token per scheme, e.g. a blue primary:
 	theme: {
 		light: {
-			// primary: 'hsl(221 83% 53%)',
-			// primaryForeground: 'hsl(0 0% 100%)'
+			primary: 'hsl(232 96% 70%)',
+			primaryForeground: 'hsl(230 25% 10%)'
 		},
 		dark: {
-			// primary: 'hsl(217 91% 60%)'
+			primary: 'hsl(232 96% 72%)'
 		}
 	}
 });
