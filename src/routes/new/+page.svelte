@@ -46,14 +46,14 @@
 			});
 			await goto(resolve('/d/[number]', { number: String(number) }));
 		} catch (err) {
-			error = err instanceof Error ? err.message : 'Failed to create the post.';
+			error = err instanceof Error ? err.message : 'Не удалось создать публикацию.';
 			busy = false;
 		}
 	}
 </script>
 
 <svelte:head>
-	<title>New post — {forumConfig.site.name}</title>
+	<title>Новая тема — {forumConfig.site.name}</title>
 </svelte:head>
 
 {#if auth.loading}
@@ -64,14 +64,14 @@
 	<Loading />
 {:else if postable.length === 0}
 	<div class="rounded-2xl border border-dashed border-fd-border py-16 text-center">
-		<p class="font-medium">No topics available</p>
+		<p class="font-medium">Нет доступных разделов</p>
 		<p class="mt-1 text-sm text-fd-muted-foreground">
-			You don't have permission to post in any topic on this forum.
+			У вас нет прав на создание тем в этом форуме.
 		</p>
 	</div>
 {:else}
 	<div class="mx-auto max-w-3xl">
-		<h1 class="mb-6 text-2xl font-bold tracking-tight">Create a new {kind}</h1>
+		<h1 class="mb-6 text-2xl font-bold tracking-tight">Создать {kind === 'article' ? 'статью' : 'тему'}</h1>
 
 		<form onsubmit={submit} class="flex flex-col gap-5">
 			{#if forumConfig.content.articles.enabled}
@@ -90,13 +90,13 @@
 			</div>
 			<p class="-mt-3 text-xs text-fd-muted-foreground">
 				{kind === 'article'
-					? 'Articles are long-form writeups, shown with a distinct reading layout.'
-					: 'Posts are regular forum threads.'}
+					? 'Статьи — это подробные материалы с отдельным оформлением.'
+					: 'Обычная тема для обсуждения.'}
 			</p>
 			{/if}
 
 			<div>
-				<label class="mb-1 block text-sm font-medium" for="dk-topic">Topic</label>
+				<label class="mb-1 block text-sm font-medium" for="dk-topic">Раздел</label>
 				<select
 					id="dk-topic"
 					bind:value={categoryId}
@@ -109,19 +109,19 @@
 			</div>
 
 			<div>
-				<label class="mb-1 block text-sm font-medium" for="dk-title">Title</label>
+				<label class="mb-1 block text-sm font-medium" for="dk-title">Заголовок</label>
 				<input
 					id="dk-title"
 					type="text"
 					bind:value={title}
 					maxlength="256"
-					placeholder="A clear, descriptive title"
+					placeholder="Краткий и понятный заголовок"
 					class="w-full rounded-lg border border-fd-border bg-fd-background px-3 py-2 text-sm outline-none focus:ring-2 focus:ring-fd-ring"
 				/>
 			</div>
 
 			<div>
-				<span class="mb-1 block text-sm font-medium">Body</span>
+				<span class="mb-1 block text-sm font-medium">Текст</span>
 				<MarkdownEditor bind:value={body} rows={12} />
 			</div>
 
@@ -143,7 +143,7 @@
 					disabled={busy || !title.trim() || !body.trim()}
 					class="rounded-lg bg-fd-primary px-4 py-2 text-sm font-medium text-fd-primary-foreground transition-opacity hover:opacity-90 disabled:opacity-50"
 				>
-					{busy ? 'Publishing…' : `Publish ${kind}`}
+					{busy ? 'Публикация…' : `Опубликовать`}
 				</button>
 			</div>
 		</form>
