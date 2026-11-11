@@ -61,7 +61,7 @@
 				loading = false;
 			});
 		} catch (err) {
-			error = err instanceof Error ? err.message : 'Failed to load topic.';
+			error = err instanceof Error ? err.message : 'Не удалось загрузить раздел.';
 		} finally {
 			loading = false;
 		}
@@ -80,9 +80,9 @@
 	}
 
 	const tabs = [
-		{ id: 'all', label: 'All' },
-		{ id: 'posts', label: 'Posts' },
-		{ id: 'articles', label: 'Articles' }
+		{ id: 'all', label: 'Все' },
+		{ id: 'posts', label: 'Темы' },
+		{ id: 'articles', label: 'Статьи' }
 	] as const;
 </script>
 
@@ -98,9 +98,9 @@
 	<Loading />
 {:else if !category}
 	<div class="rounded-2xl border border-dashed border-fd-border py-16 text-center">
-		<p class="font-medium">Topic not found</p>
+		<p class="font-medium">Раздел не найден</p>
 		<a href={resolve('/')} class="mt-2 inline-block text-sm text-fd-link hover:underline">
-			Back to all discussions
+			Назад ко всем обсуждениям
 		</a>
 	</div>
 {:else}
@@ -120,18 +120,18 @@
 				class="inline-flex items-center gap-1.5 rounded-lg bg-fd-primary px-3 py-1.5 text-sm font-medium text-fd-primary-foreground transition-opacity hover:opacity-90"
 			>
 				<svg class="size-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M12 5v14M5 12h14" /></svg>
-				New post
+				Новая тема
 			</a>
 		{:else}
 			{@const restricted = forumConfig.content.topics.restricted.includes(category.slug)}
 			<span
 				class="inline-flex items-center gap-1.5 rounded-lg border border-fd-border px-3 py-1.5 text-sm text-fd-muted-foreground"
 				title={restricted
-					? 'Only repository maintainers can post in this topic'
+					? 'Только владельцы репозитория могут публиковать в этом разделе'
 					: `Posting here requires ${repRequirement(category.slug)} reputation`}
 			>
 				<svg class="size-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" /><path d="M7 11V7a5 5 0 0 1 10 0v4" /></svg>
-				{restricted ? 'Maintainers only' : `Requires ${repRequirement(category.slug)} rep`}
+				{restricted ? 'Только администрация' : `Требуется репутация: ${repRequirement(category.slug)}`}
 			</span>
 		{/if}
 	</div>
@@ -160,9 +160,9 @@
 		<p class="rounded-xl border border-red-500/30 bg-red-500/5 p-4 text-sm text-red-500">{error}</p>
 	{:else if filtered.length === 0}
 		<div class="rounded-2xl border border-dashed border-fd-border py-16 text-center">
-			<p class="font-medium">Nothing here yet</p>
+			<p class="font-medium">Здесь пока пусто</p>
 			<p class="mt-1 text-sm text-fd-muted-foreground">
-				No {filter === 'all' ? 'discussions' : filter} in this topic.
+				В этом разделе пока нет публикаций.
 			</p>
 		</div>
 	{:else}
@@ -179,7 +179,7 @@
 					disabled={loadingMore}
 					class="rounded-lg border border-fd-border px-4 py-2 text-sm font-medium hover:bg-fd-accent disabled:opacity-50"
 				>
-					{loadingMore ? 'Loading…' : 'Load more'}
+					{loadingMore ? 'Загрузка…' : 'Загрузить ещё'}
 				</button>
 			</div>
 		{/if}
